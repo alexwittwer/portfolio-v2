@@ -11,9 +11,12 @@ function App() {
   }, []);
 
   return (
-    <div className="h-full grid grid-cols-1 md:grid-cols-2">
+    <div
+      id="content"
+      className="h-full w-screen grid grid-cols-1 md:grid-cols-2"
+    >
       <Nav />
-      <div className="bg-slate-50 text-slate-950">
+      <div className="grid items-center content-center">
         <Outlet />
       </div>
     </div>

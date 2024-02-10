@@ -21,8 +21,200 @@
   height: 100vh;
 }
 
-a:hover .hidden.md\:inline {
+.dropshadow {
+  box-shadow: 12px 12px 0px black;
+}
+
+/* ------------- Others ------------- */
+#Tech img {
+  transition: 500ms;
+}
+
+#Tech img:hover {
+  transform: scale(1.15);
+}
+
+li {
+  padding: 0.2em;
+  transition: 250ms;
+}
+
+li:hover {
+  transform: scale(1.1);
+}
+
+.fade-in {
+  animation: 0s fade-in ease-in;
+}
+
+.fade-in-long {
+  animation: 3s fade-in ease-in;
+}
+
+.slide-in-right {
+  animation: 1s slide-in-right ease-out;
+}
+
+.slide-in-left {
+  animation: 1s slide-in-left ease-out;
+}
+
+.slide-in-bottom {
+  animation: 0.5s slide-in-bottom ease-out;
+}
+
+.slide-in-top {
+  animation: 0.5s slide-in-top ease-out;
+}
+
+.card-text {
+  display: grid;
+  grid-template-columns: 4fr 1fr;
+  grid-template-rows: auto-fill;
+  gap: 4px;
+}
+
+.links {
+  display: flex;
+  flex-grow: 0;
+  justify-content: flex-end;
+  align-items: flex-end;
+  grid-row: 3/4;
+  gap: 6px;
+}
+
+.card-text h3 {
+  grid-row: 1/2;
+  grid-column: 1/2;
+}
+
+.card-text p {
+  grid-row: 2/4;
+  grid-column: 1/2;
+  max-width: 30ch;
+}
+
+.card-text a {
+  grid-column: 2/3;
+}
+
+.bio {
+  background-size: cover;
+}
+
+.tech-lines {
+  background-size: contain;
+}
+
+.card {
+  margin: 16px;
+}
+
+.icon {
+  max-width: 30px;
+}
+
+.socials img {
+  transition: 250ms;
+}
+.socials img:hover {
+  transform: scale(1.2);
+}
+
+.nav-item:hover .hidden.md\:inline {
   display: inline;
+}
+
+@keyframes hide-text {
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slide-in-right {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0%);
+  }
+}
+
+@keyframes slide-in-left {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0%);
+  }
+}
+
+@keyframes slide-in-bottom {
+  from {
+    transform: translateY(200%);
+  }
+  to {
+    transform: translateY(0%);
+  }
+}
+
+@keyframes slide-in-top {
+  from {
+    transform: translateY(-200%);
+  }
+  to {
+    transform: translateY(0%);
+  }
+}
+
+@keyframes curs {
+  50% {
+    border-color: transparent;
+  }
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+}
+
+@media screen and (min-width: 600px) {
+  .text-animate-type {
+    font-size: 3rem;
+    line-height: 1;
+  }
+
+  .portfolio {
+    margin-inline: 10%;
+    display: grid;
+  }
+
+  .portfolio img {
+    width: 1000px;
+  }
+
+  #Photos {
+    margin-inline: 10%;
+  }
+
+  #Tech img {
+    width: 100px;
+  }
+
+  #Tech h3 {
+    font-size: 1.4rem;
+    margin-bottom: 10%;
+  }
 }
 
 @media (prefers-color-scheme: light) {

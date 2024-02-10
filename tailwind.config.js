@@ -5,7 +5,13 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      gridAutoColumns: {
+        '2fr': 'minmax(0, 2fr)',
+        'main': '1fr 3fr',
+        'mobile': '1fr 7fr'
+      }
+    },
   },
   plugins: [],
 }
