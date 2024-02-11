@@ -38,18 +38,18 @@ function Card({ imageURL, title, desc, repo, live }) {
       }`}
     >
       <div className="flex flex-col items-end justify-end">
-        <h3 className="text-6xl">{title}</h3>
-        <p className="text-xl text-end">{desc}</p>
+        <h3 className="text-6xl text-start self-start">{title}</h3>
+        <p className="text-xl text-start self-start">{desc}</p>
         <button
           onClick={(e) => {
             e.preventDefault();
             toggleShow();
           }}
-          className="text-4xl my-5"
+          className="text-4xl my-5 self-start text-start"
         >
           Show preview
         </button>
-        {show && <img src={imageURL} />}
+        {show && <img className="transition-all fade-in" src={imageURL} />}
         <div className="flex flex-col items-end mt-20">
           <a className="text-8xl hover:scale-110" target="blank" href={live}>
             Live
@@ -65,7 +65,7 @@ function Card({ imageURL, title, desc, repo, live }) {
 
 function Portfolio() {
   return (
-    <section id="Projects" className="flex flex-col gap-2 mx-3 my-10">
+    <section id="Projects" className="flex flex-col gap-2 mx-20 md:mx-3 my-10">
       <Card
         imageURL={crumbum}
         title={"crumbum"}
