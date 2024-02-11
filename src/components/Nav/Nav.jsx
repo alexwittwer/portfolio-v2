@@ -1,48 +1,40 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import { useState } from "react";
 
 export default function Nav() {
+  const url = useLocation();
+
+  console.log(url);
+
   return (
     <nav className="nav flex justify-center w-full gap-3 md:gap-3 text-2xl text-left place-self-center h-full md:place-self-start md:items-stretch md:text-7xl md:flex-col md:justify-center lg:text-8xl mx-5">
-      <Link to="/about" className="nav-item max-w-fit">
-        <div className="hover:bg-yellow-500 transition-all hover:px-5 max-w-fit">
-          01/{" "}
-          <span className="hidden md:inline parent:hover:inline transition-all">
-            ABOUT
-          </span>
-        </div>
-      </Link>
-      <Link to="/tech" className="nav-item max-w-fit">
-        <div className="hover:bg-yellow-500 transition-all hover:px-5 max-w-fit">
-          02/{" "}
-          <span className="hidden md:inline hover:inline transition-all">
-            TECH
-          </span>
-        </div>
-      </Link>
-      <Link to="/projects" className="nav-item max-w-fit">
-        <div className="hover:bg-yellow-500 transition-all hover:px-5 max-w-fit">
-          03/{" "}
-          <span className="hidden hover:inline md:inline  transition-all">
-            APPS
-          </span>
-        </div>
-      </Link>
-      <Link to="/photos" className="nav-item max-w-fit">
-        <div className="hover:bg-yellow-500 transition-all hover:px-5 max-w-fit">
-          04/{" "}
-          <span className="hidden md:inline hover:inline  transition-all">
-            PHOTOS
-          </span>
-        </div>
-      </Link>
-      <Link to="/contact" className="nav-item max-w-fit">
-        <div className="hover:bg-yellow-500 transition-all hover:px-5 max-w-fit">
-          05/{" "}
-          <span className="hidden md:inline hover:inline  transition-all">
-            CONTACT
-          </span>
-        </div>
-      </Link>
+      <Navlink name={"about"} index={1} />
+      <Navlink name={"tech"} index={2} /> <Navlink name={"apps"} index={3} />{" "}
+      <Navlink name={"photos"} index={4} />{" "}
+      <Navlink name={"contact"} index={5} />
     </nav>
+  );
+}
+
+function Navlink({ name, index }) {
+  const url = useLocation();
+
+  return (
+    <Link to={`/${name}`} className="nav-item max-w-fit">
+      <div
+        className={`hover:bg-yellow-500 transition-all hover:px-8 max-w-fit ${
+          url.pathname === `/${name}` && "bg-yellow-500 px-8"
+        }`}
+      >
+        {`0${index}/`}{" "}
+        <span
+          className={`${
+            url.pathname === `/$${name}` ? "inline" : "hidden"
+          } md:inline parent:hover:inline transition-all`}
+        >
+          {name.toUpperCase()}
+        </span>
+      </div>
+    </Link>
   );
 }
