@@ -1,5 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 import { useInView } from "react-intersection-observer";
+import { useState } from "react";
 import PropTypes from "prop-types";
 import simplecalc from "../../assets/simplecalc.jpg";
 import weatherify from "../../assets/weatherify.jpg";
@@ -23,37 +24,38 @@ function Card({ imageURL, title, desc, repo, live }) {
     threshold: 0,
     rootMargin: "300px",
   });
+  const [show, setShow] = useState(false);
+
+  function toggleShow() {
+    return setShow(!show);
+  }
 
   return (
     <div
       ref={projRef}
-      className={`card bg-slate-100 hover:outline-5 hover:outline hover:outline-yellow-500 my-2 items-center justify-center ${
+      className={`card w-full hover:outline-5 hover:outline hover:outline-yellow-500 my-2 p-3 ${
         projInView ? "fade-in" : ""
       }`}
     >
-      <img
-        src={imageURL}
-        alt=""
-        className="object-cover portfolio-image"
-        width={"500px"}
-      />
-      <div className="card-text text-xl p-2">
-        <h3 className="text-4xl items-center">{title}</h3>
-        <p className="text-slate-900">{desc}</p>{" "}
-        <div className="links">
-          <a
-            className="p-3 text-xl lg:text-2xl bg-yellow-500 text-slate-50 hover:scale-105 transition-all"
-            target="blank"
-            href={repo}
-          >
-            Code
-          </a>
-          <a
-            className="p-3 text-xl lg:text-2xl bg-yellow-500 text-slate-50 hover:scale-105 transition-all"
-            target="blank"
-            href={live}
-          >
+      <div className="flex flex-col items-end justify-end">
+        <h3 className="text-6xl">{title}</h3>
+        <p className="text-xl text-end">{desc}</p>
+        <button
+          onClick={(e) => {
+            e.preventDefault();
+            toggleShow();
+          }}
+          className="text-4xl my-5"
+        >
+          Show preview
+        </button>
+        {show && <img src={imageURL} />}
+        <div className="flex flex-col items-end mt-20">
+          <a className="text-8xl hover:scale-110" target="blank" href={live}>
             Live
+          </a>
+          <a className="text-6xl hover:scale-110" target="blank" href={repo}>
+            View Repo
           </a>
         </div>
       </div>
@@ -63,244 +65,145 @@ function Card({ imageURL, title, desc, repo, live }) {
 
 function Portfolio() {
   return (
-    <section
-      id="Projects"
-      className="portfolio flex flex-col  text-slate-900 gap-2 items-center my-10"
-    >
-      <a
-        href="https://github.com/alexwittwer/blog-api/"
-        className="cursor-default"
-        target="blank"
-      >
-        <Card
-          imageURL={crumbum}
-          title={"crumbum"}
-          desc={
-            "A full stack blog built with MongoDB, React, Express, Node.js, TailwindCSS, daisyUI and various other tools as part of The Odin Project"
-          }
-          live={"https://www.crumbum.club/"}
-          repo={"https://github.com/alexwittwer/blog-api/"}
-        />
-      </a>
-      <a
-        href="https://github.com/alexwittwer/shopping-cart/"
-        className="cursor-default"
-        target="blank"
-      >
-        <Card
-          imageURL={ggio}
-          title={"GG.io Shop"}
-          desc={
-            "A multi-routed video-game webstore, built with React and TailwindCSS."
-          }
-          live={"https://ggio.vercel.app/"}
-          repo={"https://github.com/alexwittwer/shopping-cart/"}
-        />
-      </a>
-      <a
-        href="https://biamp-inventory-proto.up.railway.app/"
-        className="cursor-default"
-        target="blank"
-      >
-        <Card
-          imageURL={inventory}
-          title={"Biamp Inventory CMS"}
-          desc={
-            "An inventory CRUD app with Biamp products as placeholders, as part of The Odin Project"
-          }
-          live={"https://biamp-inventory-proto.up.railway.app/"}
-          repo={"https://github.com/alexwittwer/non-conformance-crud"}
-        />
-      </a>
-      <a
-        href="https://github.com/alexwittwer/memory-card/"
-        className="cursor-default"
-        target="blank"
-      >
-        <Card
-          imageURL={pokememory}
-          title={"Pokemon Memory Card"}
-          desc={
-            "A flashcard memory game with Pokemon, built with React and TailwindCSS."
-          }
-          live={"https://memory-card-peach.vercel.app/"}
-          repo={"https://github.com/alexwittwer/memory-card/"}
-        />
-      </a>
-      <a
-        href="https://github.com/alexwittwer/simpleCalc/"
-        className="cursor-default"
-        target="blank"
-      >
-        <Card
-          imageURL={simplecalc}
-          title={"simpleCalc"}
-          desc={
-            "A vintage style calculator app, using JavaScript, CSS, HTML as part of The Odin Project"
-          }
-          live={"https://alexwittwer.github.io/simpleCalc/"}
-          repo={"https://github.com/alexwittwer/simpleCalc/"}
-        />
-      </a>
-      <a
-        href="https://github.com/alexwittwer/cv-builder"
-        className="cursor-default"
-        target="blank"
-      >
-        <Card
-          imageURL={cvbuilder}
-          title={"CV Builder"}
-          desc={
-            "React-based CV builder with TailwindCSS, as part of The Odin Project"
-          }
-          live={"https://cv-builder-nine-henna.vercel.app/"}
-          repo={"https://github.com/alexwittwer/cv-builder/"}
-        />
-      </a>
-      <a
-        href="https://github.com/alexwittwer/mini-message-board/"
-        className="cursor-default"
-        target="blank"
-      >
-        <Card
-          imageURL={blueboard}
-          title={"BlueBoard"}
-          desc={
-            "A mini-message board built with Express, Mongoose, MongoDB, pug and SASS, as part of The Odin Project"
-          }
-          live={"https://blue-board.up.railway.app/"}
-          repo={"https://github.com/alexwittwer/mini-message-board/"}
-        />
-      </a>
-      <a
-        href="https://github.com/alexwittwer/weather-app/"
-        className="cursor-default"
-        target="blank"
-      >
-        <Card
-          imageURL={weatherify}
-          title={"Weatherify"}
-          desc={
-            "A dynamic weather app using an free weather API, as part of The Odin Project curriculum"
-          }
-          live={"https://alexwittwer.github.io/weather-app/"}
-          repo={"https://github.com/alexwittwer/weather-app/"}
-        />
-      </a>
-      <a
-        href="https://github.com/alexwittwer/battleship/"
-        className="cursor-default"
-        target="blank"
-      >
-        <Card
-          imageURL={battleship}
-          title={"Battleship"}
-          desc={
-            "A remake of the classic Hasbro game, Battleship, as part of The Odin Project curriculum"
-          }
-          live={"https://alexwittwer.github.io/battleship/"}
-          repo={"https://github.com/alexwittwer/battleship/"}
-        />
-      </a>
-      <a
-        href="https://github.com/alexwittwer/Hardena-Restaurant"
-        className="cursor-default"
-        target="blank"
-      >
-        <Card
-          imageURL={hardena}
-          title={"Hardena Restaurant"}
-          desc={
-            "A remake of local restaurant Hardena in Philadelphia, as part of The Odin Project"
-          }
-          live={"https://alexwittwer.github.io/Hardena-Restaurant/"}
-          repo={"https://github.com/alexwittwer/Hardena-Restaurant/"}
-        />
-      </a>
-      <a
-        href="https://github.com/alexwittwer/admin-dashboard"
-        className="cursor-default"
-        target="blank"
-      >
-        <Card
-          imageURL={dashboard}
-          title={"Admin Dashboard"}
-          desc={
-            "CSS/HTML mockup of an admin dashboard, as part of The Odin Project"
-          }
-          live={"https://alexwittwer.github.io/admin-dashboard/"}
-          repo={"https://github.com/alexwittwer/admin-dashboard/"}
-        />
-      </a>
-      <a
-        href="https://github.com/alexwittwer/naughts-and-crosses"
-        className="cursor-default"
-        target="blank"
-      >
-        <Card
-          imageURL={tictactoe}
-          title={"Naughts & Crosses"}
-          desc={
-            "Tic-Tac-Toe as an introduction to JavaScript, as part of The Odin Project"
-          }
-          live={"https://alexwittwer.github.io/naughts-and-crosses/"}
-          repo={"https://github.com/alexwittwer/naughts-and-crosses/"}
-        />
-      </a>
-      <a
-        href="https://github.com/alexwittwer/BookNerd"
-        className="cursor-default"
-        target="blank"
-      >
-        <Card
-          imageURL={booknerd}
-          title={"BookNerd"}
-          desc={"Library tracking app, as part of The Odin Project"}
-          live={"https://alexwittwer.github.io/BookNerd/"}
-          repo={"https://github.com/alexwittwer/BookNerd/"}
-        />
-      </a>
-      <a
-        href="https://github.com/alexwittwer/etch-a-sketch"
-        className="cursor-default"
-        target="blank"
-      >
-        <Card
-          imageURL={etchasketch}
-          title={"Etch-a-Sketch"}
-          desc={"Pixel etch-a-sketch, as part of The Odin Project"}
-          live={"https://alexwittwer.github.io/etch-a-sketch/"}
-          repo={"https://github.com/alexwittwer/etch-a-sketch/"}
-        />
-      </a>
-      <a
-        href="https://github.com/alexwittwer/ToDoer"
-        className="cursor-default"
-        target="blank"
-      >
-        <Card
-          imageURL={todoer}
-          title={"ToDoer"}
-          desc={"Classic To Do list project, as part of The Odin Project"}
-          live={"https://alexwittwer.github.io/ToDoer/"}
-          repo={"https://github.com/alexwittwer/ToDoer/"}
-        />
-      </a>
-      <a
-        href="https://github.com/alexwittwer/odinrecipes"
-        className="cursor-default"
-        target="blank"
-      >
-        <Card
-          imageURL={odinrecipes}
-          title={"Odin Recipes"}
-          desc={
-            "My first website and a reminder of where I came from. Part of The Odin Project"
-          }
-          live={"https://alexwittwer.github.io/odin-recipes/"}
-          repo={"https://github.com/alexwittwer/odin-recipes/"}
-        />
-      </a>
+    <section id="Projects" className="flex flex-col gap-2 mx-3 my-10">
+      <Card
+        imageURL={crumbum}
+        title={"crumbum"}
+        desc={
+          "A full stack blog built with MongoDB, React, Express, Node.js, TailwindCSS, daisyUI. Users can create, edit and delete their own posts, or access them from the public facing free REST API. Authentication and Authorization through JWT and segregated user and user-auth accounts allows for security. Administrators can moderate content from the web portal"
+        }
+        live={"https://www.crumbum.club/"}
+        repo={"https://github.com/alexwittwer/blog-api/"}
+      />
+      <Card
+        imageURL={ggio}
+        title={"GG.io Shop"}
+        desc={
+          "A multi-routed video-game webstore, built with React and TailwindCSS. Consumes RAWG.io REST API. Fully responsive, with mobile-friendly image carousels. Users can add and view items in a cart and check their totals. Also implements a search bar from the API as well as categories for popular games"
+        }
+        live={"https://ggio.vercel.app/"}
+        repo={"https://github.com/alexwittwer/shopping-cart/"}
+      />
+      <Card
+        imageURL={inventory}
+        title={"Biamp Inventory CMS"}
+        desc={
+          "An inventory CRUD app with Biamp products as placeholders, as part of The Odin Project. Please note that this application has no security in place and users can delete and modify content (there has been some vandalism from other visitors.)"
+        }
+        live={"https://biamp-inventory-proto.up.railway.app/"}
+        repo={"https://github.com/alexwittwer/non-conformance-crud"}
+      />
+      <Card
+        imageURL={pokememory}
+        title={"Pokemon Memory Card"}
+        desc={
+          "A flashcard memory game with Pokemon, built with React and TailwindCSS. Consumes the public RESTful PokeAPI. Users can choose between Easy, Medium, or Hard (with optional Insane mode.)"
+        }
+        live={"https://memory-card-peach.vercel.app/"}
+        repo={"https://github.com/alexwittwer/memory-card/"}
+      />
+      <Card
+        imageURL={simplecalc}
+        title={"simpleCalc"}
+        desc={
+          "A vintage and stylish calculator app, using JavaScript, CSS, HTML as part of The Odin Project. Try dividing by zero to view a secret message!"
+        }
+        live={"https://alexwittwer.github.io/simpleCalc/"}
+        repo={"https://github.com/alexwittwer/simpleCalc/"}
+      />
+      <Card
+        imageURL={cvbuilder}
+        title={"CV Builder"}
+        desc={
+          "React-based CV builder with TailwindCSS, as part of The Odin Project"
+        }
+        live={"https://cv-builder-nine-henna.vercel.app/"}
+        repo={"https://github.com/alexwittwer/cv-builder/"}
+      />
+      <Card
+        imageURL={blueboard}
+        title={"BlueBoard"}
+        desc={
+          "A mini-message board built with Express, Mongoose, MongoDB, pug and SASS, as part of The Odin Project"
+        }
+        live={"https://blue-board.up.railway.app/"}
+        repo={"https://github.com/alexwittwer/mini-message-board/"}
+      />
+      <Card
+        imageURL={weatherify}
+        title={"Weatherify"}
+        desc={
+          "A dynamic weather app using an free weather API, as part of The Odin Project curriculum"
+        }
+        live={"https://alexwittwer.github.io/weather-app/"}
+        repo={"https://github.com/alexwittwer/weather-app/"}
+      />
+      <Card
+        imageURL={battleship}
+        title={"Battleship"}
+        desc={
+          "A remake of the classic Hasbro game, Battleship, as part of The Odin Project curriculum"
+        }
+        live={"https://alexwittwer.github.io/battleship/"}
+        repo={"https://github.com/alexwittwer/battleship/"}
+      />
+      <Card
+        imageURL={hardena}
+        title={"Hardena Restaurant"}
+        desc={
+          "A remake of local restaurant Hardena in Philadelphia, as part of The Odin Project"
+        }
+        live={"https://alexwittwer.github.io/Hardena-Restaurant/"}
+        repo={"https://github.com/alexwittwer/Hardena-Restaurant/"}
+      />
+      <Card
+        imageURL={dashboard}
+        title={"Admin Dashboard"}
+        desc={
+          "CSS/HTML mockup of an admin dashboard, as part of The Odin Project"
+        }
+        live={"https://alexwittwer.github.io/admin-dashboard/"}
+        repo={"https://github.com/alexwittwer/admin-dashboard/"}
+      />
+      <Card
+        imageURL={tictactoe}
+        title={"Naughts & Crosses"}
+        desc={
+          "Tic-Tac-Toe as an introduction to JavaScript, as part of The Odin Project"
+        }
+        live={"https://alexwittwer.github.io/naughts-and-crosses/"}
+        repo={"https://github.com/alexwittwer/naughts-and-crosses/"}
+      />
+      <Card
+        imageURL={booknerd}
+        title={"BookNerd"}
+        desc={"Library tracking app, as part of The Odin Project"}
+        live={"https://alexwittwer.github.io/BookNerd/"}
+        repo={"https://github.com/alexwittwer/BookNerd/"}
+      />
+      <Card
+        imageURL={etchasketch}
+        title={"Etch-a-Sketch"}
+        desc={"Pixel etch-a-sketch, as part of The Odin Project"}
+        live={"https://alexwittwer.github.io/etch-a-sketch/"}
+        repo={"https://github.com/alexwittwer/etch-a-sketch/"}
+      />
+      <Card
+        imageURL={todoer}
+        title={"ToDoer"}
+        desc={"Classic To Do list project, as part of The Odin Project"}
+        live={"https://alexwittwer.github.io/ToDoer/"}
+        repo={"https://github.com/alexwittwer/ToDoer/"}
+      />
+      <Card
+        imageURL={odinrecipes}
+        title={"Odin Recipes"}
+        desc={
+          "My first website and a reminder of where I came from. Part of The Odin Project"
+        }
+        live={"https://alexwittwer.github.io/odin-recipes/"}
+        repo={"https://github.com/alexwittwer/odin-recipes/"}
+      />
     </section>
   );
 }

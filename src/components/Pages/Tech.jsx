@@ -24,8 +24,10 @@ export default function Tech() {
     "RESTful API",
   ];
 
+  const fontsizes = ["text-4xl", "text-5xl", "text-6xl"];
+
   function randomInt() {
-    const num = Math.round(Math.random() * 3 + 5);
+    const num = Math.round(Math.random() * 10);
     return num;
   }
 
@@ -44,7 +46,7 @@ export default function Tech() {
       {shuffle(skills).map((skill) => {
         return (
           <span
-            className={`mx-3 w-fit text-${randomInt()}xl ${
+            className={`mx-3 w-fit ${shuffle(fontsizes)[0]} ${
               randomInt() > 6 ? "text-yellow-500" : ""
             }`}
           >

@@ -12,12 +12,12 @@ export default function Contact() {
   });
 
   return (
-    <section id="Contact" className="h-screen">
+    <section id="Contact" className=" h-screen">
       <div
         ref={socRef}
         className={` ${
           socInView ? "fade-in" : ""
-        } h-screen flex flex-col justify-center text-center text-4xl items-center text-slate-100  gap-5`}
+        } h-screen flex flex-col max-w-prose mx-5 justify-center text-center text-4xl items-center gap-5`}
       >
         <h2 ref={socRef} className={`${socInView ? "slide-in-top" : ""}`}>
           You can download my resume{" "}
