@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 export default function Nav() {
   return (
-    <nav className="nav flex justify-center w-full gap-3 md:gap-3 text-2xl text-left place-self-center h-full md:place-self-start md:items-stretch md:text-7xl md:flex-col md:justify-center lg:text-8xl mx-5">
+    <nav className="nav flex justify-center w-full gap-6 md:gap-3 text-2xl text-left place-self-center h-full md:place-self-start md:items-stretch md:text-7xl md:flex-col md:justify-center lg:text-8xl mx-5">
       <Link to="/about" className="nav-item max-w-fit">
         <div className="hover:bg-yellow-500 transition-all hover:px-5 max-w-fit">
           01/{" "}
