@@ -19,7 +19,7 @@ import blueboard from "../../assets/blueboard.webp";
 import inventory from "../../assets/inventory.webp";
 import crumbum from "../../assets/crumbum.webp";
 
-function Card({ imageURL, title, desc, repo, live }) {
+function Card({ imageURL, tech, title, desc, repo, live }) {
   const { ref: projRef, inView: projInView } = useInView({
     threshold: 0,
     rootMargin: "300px",
@@ -38,17 +38,36 @@ function Card({ imageURL, title, desc, repo, live }) {
       }`}
     >
       <div className="flex flex-col items-end justify-end">
-        <h3 className="text-6xl text-start self-start">{title}</h3>
-        <p className="text-xl text-start self-start">{desc}</p>
-        <button
-          onClick={(e) => {
-            e.preventDefault();
-            toggleShow();
-          }}
-          className="text-4xl my-5 self-start text-start"
-        >
-          Show preview
-        </button>
+        <h3 className="text-4xl md:text-6xl text-start self-start">{title}</h3>
+        <p className="text-xl my-3 text-start self-start">{desc}</p>
+        <p className="text-xl my-3 text-start self-start">Tech: {tech}</p>
+        <div className="flex items-center gap-3">
+          <button
+            onClick={(e) => {
+              e.preventDefault();
+              toggleShow();
+            }}
+            className="text-4xl my-5 self-start text-start"
+          >
+            Toggle preview
+          </button>
+          {!show && (
+            <div
+              class="arrow-1-down cursor-pointer"
+              onClick={() => {
+                toggleShow();
+              }}
+            ></div>
+          )}
+          {show && (
+            <div
+              class="arrow-1-up cursor-pointer"
+              onClick={() => {
+                toggleShow();
+              }}
+            ></div>
+          )}
+        </div>
         {show && <img className="transition-all fade-in" src={imageURL} />}
         <div className="flex flex-col items-end mt-20">
           <a className="text-8xl hover:scale-110" target="blank" href={live}>
@@ -65,12 +84,15 @@ function Card({ imageURL, title, desc, repo, live }) {
 
 function Portfolio() {
   return (
-    <section id="Projects" className="flex flex-col gap-2 mx-20 md:mx-3 my-10">
+    <section id="Projects" className="flex flex-col gap-2 mx-5 md:mx-3 my-10">
       <Card
         imageURL={crumbum}
         title={"crumbum"}
         desc={
           "A full stack blog built with MongoDB, React, Express, Node.js, TailwindCSS, daisyUI. Users can create, edit and delete their own posts, or access them from the public facing free REST API. Authentication and Authorization through JWT and segregated user and user-auth accounts allows for security. Administrators can moderate content from the web portal"
+        }
+        tech={
+          "React, Express.js, MongoDB, Node.js, TailwindCSS, Passport.js, JSON Web Tokens, Mongoose, daisyUI"
         }
         live={"https://www.crumbum.club/"}
         repo={"https://github.com/alexwittwer/blog-api/"}
@@ -81,6 +103,7 @@ function Portfolio() {
         desc={
           "A multi-routed video-game webstore, built with React and TailwindCSS. Consumes RAWG.io REST API. Fully responsive, with mobile-friendly image carousels. Users can add and view items in a cart and check their totals. Also implements a search bar from the API as well as categories for popular games"
         }
+        tech={"React, React-Router, Immer, API, Vercel, Vite"}
         live={"https://ggio.vercel.app/"}
         repo={"https://github.com/alexwittwer/shopping-cart/"}
       />
@@ -90,6 +113,7 @@ function Portfolio() {
         desc={
           "An inventory CRUD app with Biamp products as placeholders, as part of The Odin Project. Please note that this application has no security in place and users can delete and modify content (there has been some vandalism from other visitors.)"
         }
+        tech={"Node.js, Express.js, Pug/Jade, Railway, MongoDB, Mongoose"}
         live={"https://biamp-inventory-proto.up.railway.app/"}
         repo={"https://github.com/alexwittwer/non-conformance-crud"}
       />
@@ -99,6 +123,7 @@ function Portfolio() {
         desc={
           "A flashcard memory game with Pokemon, built with React and TailwindCSS. Consumes the public RESTful PokeAPI. Users can choose between Easy, Medium, or Hard (with optional Insane mode.)"
         }
+        tech={"React, Vite, Tailwind"}
         live={"https://memory-card-peach.vercel.app/"}
         repo={"https://github.com/alexwittwer/memory-card/"}
       />
@@ -108,6 +133,7 @@ function Portfolio() {
         desc={
           "A vintage and stylish calculator app, using JavaScript, CSS, HTML as part of The Odin Project. Try dividing by zero to view a secret message!"
         }
+        tech={"Javascript, HTML5, CSS3"}
         live={"https://alexwittwer.github.io/simpleCalc/"}
         repo={"https://github.com/alexwittwer/simpleCalc/"}
       />
@@ -117,6 +143,7 @@ function Portfolio() {
         desc={
           "React-based CV builder with TailwindCSS, as part of The Odin Project"
         }
+        tech={"React, TailwindCSS, Vite"}
         live={"https://cv-builder-nine-henna.vercel.app/"}
         repo={"https://github.com/alexwittwer/cv-builder/"}
       />
@@ -126,6 +153,7 @@ function Portfolio() {
         desc={
           "A mini-message board built with Express, Mongoose, MongoDB, pug and SASS, as part of The Odin Project"
         }
+        tech={"Express, Node.js, Pug/Jade"}
         live={"https://blue-board.up.railway.app/"}
         repo={"https://github.com/alexwittwer/mini-message-board/"}
       />
@@ -135,6 +163,7 @@ function Portfolio() {
         desc={
           "A dynamic weather app using an free weather API, as part of The Odin Project curriculum"
         }
+        tech="Javascript, HTML5, CSS3, WeatherAPI"
         live={"https://alexwittwer.github.io/weather-app/"}
         repo={"https://github.com/alexwittwer/weather-app/"}
       />
@@ -144,6 +173,7 @@ function Portfolio() {
         desc={
           "A remake of the classic Hasbro game, Battleship, as part of The Odin Project curriculum"
         }
+        tech={"Javascript, HTML5, CSS3, Vitest"}
         live={"https://alexwittwer.github.io/battleship/"}
         repo={"https://github.com/alexwittwer/battleship/"}
       />
@@ -151,8 +181,9 @@ function Portfolio() {
         imageURL={hardena}
         title={"Hardena Restaurant"}
         desc={
-          "A remake of local restaurant Hardena in Philadelphia, as part of The Odin Project"
+          "A remake of local restaurant Hardena in Philadelphia, as part of The Odin Project. Built entirely in Javascript."
         }
+        tech={"Javascript, CSS3"}
         live={"https://alexwittwer.github.io/Hardena-Restaurant/"}
         repo={"https://github.com/alexwittwer/Hardena-Restaurant/"}
       />
@@ -162,6 +193,7 @@ function Portfolio() {
         desc={
           "CSS/HTML mockup of an admin dashboard, as part of The Odin Project"
         }
+        tech={"HTML5, CSS3"}
         live={"https://alexwittwer.github.io/admin-dashboard/"}
         repo={"https://github.com/alexwittwer/admin-dashboard/"}
       />
@@ -171,6 +203,7 @@ function Portfolio() {
         desc={
           "Tic-Tac-Toe as an introduction to JavaScript, as part of The Odin Project"
         }
+        tech={"Javascript, HTML5, CSS3"}
         live={"https://alexwittwer.github.io/naughts-and-crosses/"}
         repo={"https://github.com/alexwittwer/naughts-and-crosses/"}
       />
@@ -178,6 +211,7 @@ function Portfolio() {
         imageURL={booknerd}
         title={"BookNerd"}
         desc={"Library tracking app, as part of The Odin Project"}
+        tech={"Javascript, HTML5, CSS3"}
         live={"https://alexwittwer.github.io/BookNerd/"}
         repo={"https://github.com/alexwittwer/BookNerd/"}
       />
@@ -185,6 +219,7 @@ function Portfolio() {
         imageURL={etchasketch}
         title={"Etch-a-Sketch"}
         desc={"Pixel etch-a-sketch, as part of The Odin Project"}
+        tech={"Javascript, HTML5, CSS3"}
         live={"https://alexwittwer.github.io/etch-a-sketch/"}
         repo={"https://github.com/alexwittwer/etch-a-sketch/"}
       />
@@ -192,6 +227,7 @@ function Portfolio() {
         imageURL={todoer}
         title={"ToDoer"}
         desc={"Classic To Do list project, as part of The Odin Project"}
+        tech={"Javascript, HTML5, CSS3, LocalStorage"}
         live={"https://alexwittwer.github.io/ToDoer/"}
         repo={"https://github.com/alexwittwer/ToDoer/"}
       />
@@ -201,6 +237,7 @@ function Portfolio() {
         desc={
           "My first website and a reminder of where I came from. Part of The Odin Project"
         }
+        tech={"HTML5, CSS3"}
         live={"https://alexwittwer.github.io/odin-recipes/"}
         repo={"https://github.com/alexwittwer/odin-recipes/"}
       />

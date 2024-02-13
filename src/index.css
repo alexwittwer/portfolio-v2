@@ -103,6 +103,105 @@ li:hover {
   display: inline;
 }
 
+/* one div items */
+
+.arrow-1-up {
+  --size: 24px;
+  --color: currentColor;
+  --animation-timing-function: cubic-bezier(0.85, 0, 0.15, 1);
+  --animation-duration: 2s;
+  position: relative;
+  width: var(--size);
+  height: var(--size);
+  overflow-y: hidden;
+}
+
+.arrow-1-up::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: var(--color);
+  clip-path: polygon(
+    0% 50%,
+    50% 0%,
+    100% 50%,
+    75% 50%,
+    75% 100%,
+    25% 100%,
+    25% 50%,
+    0% 50%
+  );
+  transform: translateY(-100%);
+  animation: var(--animation-timing-function) var(--animation-duration) infinite
+    arrow-1-up-animation;
+}
+.arrow-1-down {
+  --size: 24px;
+  --color: currentColor;
+  --animation-timing-function: cubic-bezier(0.85, 0, 0.15, 1);
+  --animation-duration: 2s;
+  position: relative;
+  width: var(--size);
+  height: var(--size);
+  overflow-y: hidden;
+}
+
+.arrow-1-down::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: var(--color);
+  clip-path: polygon(
+    0% 50%,
+    50% 100%,
+    100% 50%,
+    75% 50%,
+    75% 0%,
+    25% 0%,
+    25% 50%,
+    0% 50%
+  );
+  transform: translateY(-100%);
+  animation: var(--animation-timing-function) var(--animation-duration) infinite
+    arrow-1-down-animation;
+}
+
+@keyframes arrow-1-down-animation {
+  0% {
+    transform: translateY(-100%);
+  }
+
+  45% {
+    transform: translateY(0%);
+  }
+
+  55% {
+    transform: translateY(0%);
+  }
+
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+@keyframes arrow-1-up-animation {
+  0% {
+    transform: translateY(100%);
+  }
+
+  45% {
+    transform: translateY(0%);
+  }
+
+  55% {
+    transform: translateY(0%);
+  }
+
+  100% {
+    transform: translateY(-100%);
+  }
+}
+
 @keyframes hide-text {
   to {
     opacity: 0;

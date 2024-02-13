@@ -24,7 +24,7 @@ export default function Tech() {
     "RESTful API",
   ];
 
-  const fontsizes = ["text-4xl", "text-5xl", "text-6xl"];
+  const fontsizes = ["text-3xl", "text-4xl", "text-5xl"];
 
   function randomInt() {
     const num = Math.round(Math.random() * 10);
@@ -42,13 +42,13 @@ export default function Tech() {
   }
 
   return (
-    <main className="flex flex-wrap place-items-center items-center justify-center max-w-prose mx-auto ">
+    <main className="flex flex-wrap py-40 gap-5 h-screen justify-center max-w-prose mx-auto overflow-y-hidden overflow-x-hidden ">
       {shuffle(skills).map((skill) => {
         return (
           <span
-            className={`mx-3 w-fit ${shuffle(fontsizes)[0]} ${
-              randomInt() > 6 ? "text-yellow-500" : ""
-            }`}
+            className={`mx-3 cursor-default hover:scale-110 w-fit ${
+              shuffle(fontsizes)[0]
+            } ${randomInt() > 6 ? "text-yellow-500" : ""}`}
           >
             {skill}
           </span>
