@@ -21,7 +21,7 @@ export default function About() {
   ];
 
   return (
-    <main className="flex h-screen flex-col gap-3 justify-center items-center text-center transition-all">
+    <main className="flex h-screen flex-col gap-3 justify-center items-center text-center transition-all max-w-full">
       <h1 className="text-7xl">Hello,</h1>
       <div className="text-5xl">
         I'm <span className="bg-yellow-500 px-2">{profession}</span>

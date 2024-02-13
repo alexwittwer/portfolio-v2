@@ -84,7 +84,10 @@ function Card({ imageURL, tech, title, desc, repo, live }) {
 
 function Portfolio() {
   return (
-    <section id="Projects" className="flex flex-col gap-2 mx-5 md:mx-3 my-10">
+    <section
+      id="Projects"
+      className="flex flex-col gap-2 box-content mx-5 md:mx-3 my-10"
+    >
       <Card
         imageURL={crumbum}
         title={"crumbum"}

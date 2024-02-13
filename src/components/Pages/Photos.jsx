@@ -32,7 +32,7 @@ function Gallery() {
   return (
     <section
       id="Photos"
-      className="grid grid-cols-1 gap-5 m-5 justify-center items-center"
+      className="grid grid-cols-1 gap-5 p-8 md:p-1 mx-auto justify-center items-center"
     >
       <PhotoWrapper>
         <img src={photo1} alt="a wildland firefighter covered in soot" />
@@ -129,7 +129,7 @@ function Gallery() {
 
 export default function Photos() {
   return (
-    <main className="max-h-screen overflow-y-auto mx-auto">
+    <main className="max-h-screen overflow-y-auto">
       <Gallery />
     </main>
   );

@@ -7,7 +7,7 @@ export default function Nav() {
   console.log(url);
 
   return (
-    <nav className="nav flex justify-center max-h-fit w-full gap-2 md:gap-3 text-2xl text-left place-self-center h-full md:place-self-start md:items-stretch md:text-6xl md:flex-col md:justify-center lg:text-8xl mx-5">
+    <nav className="flex h-full justify-center text-2xl md:text-left place-self-center gap-1 md:mx-10 md:gap-3 md:place-self-start md:items-stretch md:text-6xl md:flex-col md:justify-center lg:text-8xl">
       <Navlink name={"about"} index={1} />
       <Navlink name={"tech"} index={2} />
       <Navlink name={"apps"} index={3} />
@@ -23,7 +23,7 @@ function Navlink({ name, index }) {
   return (
     <Link to={`/${name}`} className="nav-item max-h-fit max-w-fit">
       <div
-        className={`hover:bg-yellow-500 transition-all hover:px-8 max-w-fit ${
+        className={`hover:bg-yellow-500 transition-all hover:px-8 ${
           url.pathname === `/${name}` && "bg-yellow-500 px-8"
         }`}
       >

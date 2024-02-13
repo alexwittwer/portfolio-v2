@@ -15,14 +15,12 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  padding: 0px;
+  margin: 0px;
 }
 
 #root {
   height: 100vh;
-}
-
-.dropshadow {
-  box-shadow: 12px 12px 0px #000000;
 }
 
 /* ------------- Others ------------- */
@@ -36,15 +34,6 @@
 
 #Tech img:hover {
   transform: scale(1.15);
-}
-
-li {
-  padding: 0.2em;
-  transition: 250ms;
-}
-
-li:hover {
-  transform: scale(1.1);
 }
 
 .fade-in {
@@ -78,14 +67,6 @@ li:hover {
   align-items: flex-end;
   grid-row: 3/4;
   gap: 6px;
-}
-
-.bio {
-  background-size: cover;
-}
-
-.tech-lines {
-  background-size: contain;
 }
 
 .icon {
@@ -266,31 +247,8 @@ li:hover {
 }
 
 @media screen and (min-width: 600px) {
-  .text-animate-type {
-    font-size: 3rem;
-    line-height: 1;
-  }
-
   .portfolio {
-    margin-inline: 10%;
     display: grid;
-  }
-
-  .portfolio img {
-    width: 1000px;
-  }
-
-  #Photos {
-    margin-inline: 10%;
-  }
-
-  #Tech img {
-    width: 100px;
-  }
-
-  #Tech h3 {
-    font-size: 1.4rem;
-    margin-bottom: 10%;
   }
 }
 
