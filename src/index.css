@@ -34,10 +34,6 @@
   transform: scale(1.15);
 }
 
-.card {
-  background-color: #222222;
-}
-
 li {
   padding: 0.2em;
   transition: 250ms;
@@ -299,10 +295,7 @@ li:hover {
     color: #213547;
     background-color: #ffffff;
   }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
+  .card {
+    background-color: #e9e9e9;
   }
 }
