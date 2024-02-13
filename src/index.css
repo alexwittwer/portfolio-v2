@@ -30,6 +30,10 @@
   transition: 500ms;
 }
 
+.card {
+  background-color: #2e2e2e;
+}
+
 #Tech img:hover {
   transform: scale(1.15);
 }
