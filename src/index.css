@@ -22,7 +22,7 @@
 }
 
 .dropshadow {
-  box-shadow: 12px 12px 0px black;
+  box-shadow: 12px 12px 0px #000000;
 }
 
 /* ------------- Others ------------- */
@@ -297,5 +297,9 @@ li:hover {
   }
   .card {
     background-color: #e9e9e9;
+  }
+
+  .ext {
+    filter: invert();
   }
 }

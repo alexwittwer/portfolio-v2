@@ -27,16 +27,19 @@ export default function Contact() {
           and find more of my work at any of the following links.{" "}
         </h2>
         <div className="flex justify-center items-center gap-5 p-5 socials">
-          <a href="https://www.linkedin.com/in/alex-wittwer/">
+          <a className="ext" href="https://www.linkedin.com/in/alex-wittwer/">
             <img src={linkedin} alt="linkedin icon" width={"50px"} />
           </a>
-          <a href="https://github.com/alexwittwer">
+          <a className="ext" href="https://github.com/alexwittwer">
             <img src={github} alt="github icon" width={"50px"} />
           </a>
-          <a href="https://www.instagram.com/_wittwer/">
+          <a className="ext" href="https://www.instagram.com/_wittwer/">
             <img src={instagram} alt="instagram icon" width={"50px"} />
           </a>
-          <a href="https://awittwer.22slides.com/photojournalism">
+          <a
+            className="ext"
+            href="https://awittwer.22slides.com/photojournalism"
+          >
             <img src={twotwoslides} alt="2 2 slides icon" width={"50px"} />
           </a>
         </div>
