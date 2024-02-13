@@ -7,7 +7,7 @@ export default function Nav() {
   console.log(url);
 
   return (
-    <nav className="nav flex justify-center max-h-fit w-full gap-2 md:gap-3 text-2xl text-left place-self-center h-full md:place-self-start md:items-stretch md:text-7xl md:flex-col md:justify-center lg:text-8xl mx-5">
+    <nav className="nav flex justify-center max-h-fit w-full gap-2 md:gap-3 text-2xl text-left place-self-center h-full md:place-self-start md:items-stretch md:text-6xl md:flex-col md:justify-center lg:text-8xl mx-5">
       <Navlink name={"about"} index={1} />
       <Navlink name={"tech"} index={2} />
       <Navlink name={"apps"} index={3} />
