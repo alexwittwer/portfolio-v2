@@ -32,7 +32,7 @@ function Gallery() {
   return (
     <section
       id="Photos"
-      className="grid grid-cols-1 gap-5 p-8 md:p-1 mx-auto justify-center items-center"
+      className="grid grid-cols-1 gap-5 p-5 md:p-8 mx-auto justify-center items-center"
     >
       <PhotoWrapper>
         <img src={photo1} alt="a wildland firefighter covered in soot" />
